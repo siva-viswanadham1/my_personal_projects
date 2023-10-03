@@ -17,6 +17,9 @@ src = './assets/profile.png'
     
 </head>
 <style>
+    h1{
+        color: blue;
+    }
         .highlight{
             background-color: yellow; 
         }
@@ -32,15 +35,32 @@ src = './assets/profile.png'
         a:hover{
             background-color: red;
         }
+        #one{
+            color: red;
+        }
+        #txt{
+            text-align: center;
+        }
+        #special{
+            background-color: green;
+        }
     </style>
 
 <body>
-    <h1>Heading</h1>
+    <h1 id="txt">Heading</h1>
     <p class="highlight"><span>This is a highlighted paragraph.</span></p>
     <p id="special">This is a special paragraph.</p>
     <input type="text" />
     <input type="number" />
     <a href="#">Link</a>
+    <div>
+        <h1>Heading</h1>
+        <p class="highlight">Paragraph with yellow background.</p>
+        <p class="highlight" id="one">This is a highlighted paragraph.</p>
+        <p id="special">This is a special paragraph.</p>
+        <input type="text" />
+        <a href="#">Link</a>
+    </div>
 </body>
 
 </html>
