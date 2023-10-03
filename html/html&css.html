@@ -13,6 +13,9 @@ src = './assets/profile.png'
 
 <head>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     
     
 </head>
@@ -44,6 +47,18 @@ src = './assets/profile.png'
         #special{
             background-color: green;
         }
+        .font{
+            font-family: 'Bebas Neue', sans-serif;
+        }
+        #bg{
+            
+            width: max-content;
+            height: max-content;
+            background-image: url(https://logos-world.net/wp-content/uploads/2020/11/GitHub-Symbol.png);
+            
+        }
+        
+        
     </style>
 
 <body>
@@ -53,13 +68,19 @@ src = './assets/profile.png'
     <input type="text" />
     <input type="number" />
     <a href="#">Link</a>
+    <a href="https://github.com/siva-viswanadham1/my_personal_projects.git">git</a>
     <div>
         <h1>Heading</h1>
         <p class="highlight">Paragraph with yellow background.</p>
         <p class="highlight" id="one">This is a highlighted paragraph.</p>
         <p id="special">This is a special paragraph.</p>
+        <p class="font">this special font</p>
         <input type="text" />
-        <a href="#">Link</a>
+        
+        <div id="bg">
+            <img src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Symbol.png" alt="git" height="100" width="100">
+            <a href="#" >Link</a>
+        </div>
     </div>
 </body>
 
