@@ -1,0 +1,41 @@
+h2{
+    background-color: palevioletred;
+}
+h1{
+    color: blue;
+}
+    .highlight{
+        background-color: yellow; 
+    }
+    input[type="text"]{
+    border-style: solid;
+    border-color: gray;
+    border: width 10px;
+
+    }
+    p{
+        font: size 20px;
+    }
+    a:hover{
+        background-color: red;
+    }
+    #one{
+        color: red;
+        
+    }
+    #txt{
+        text-align: center;
+    }
+    #special{
+        background-color: green;
+    }
+    .font{
+        font-family: 'Bebas Neue', sans-serif;
+    }
+    #bg{
+        
+        width: max-content;
+        height: max-content;
+        background-image: url(https://logos-world.net/wp-content/uploads/2020/11/GitHub-Symbol.png);
+        
+    }
