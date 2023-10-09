@@ -39,3 +39,8 @@ h1{
         background-image: url(https://logos-world.net/wp-content/uploads/2020/11/GitHub-Symbol.png);
         
     }
+    .back{
+        background-image: url(https://images.pexels.com/photos/807598/pexels-photo-807598.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+        
+        width: 100vw;
+    }
