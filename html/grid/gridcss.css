@@ -1,0 +1,38 @@
+body{
+    background-color: tomato;
+    color: white;
+    display: grid;
+    /* border: 1px solid black; */
+    grid-template-columns: 10% 70% 10% 10%;
+    grid-template-rows: 10vh 80vh 10vh;
+    grid-template-areas: 
+    'top top top top'
+    'navbar content sider-1 sider-2'
+    'navbar foot foot foot ';
+}
+header{
+    grid-area: top;
+    border: 1px solid black;
+    text-align: center;
+}
+main{
+    grid-area: content;
+    border: 1px solid black;
+    text-align: center;
+    
+}
+nav{
+    grid-area: navbar;
+    border: 1px solid black;
+    text-align: center;
+}
+aside{
+    grid-area: sider-1,sider-2;
+    border: 1px solid black;
+    text-align: center;
+}
+footer{
+    grid-area: foot;
+    border: 1px solid black;
+    text-align: center;
+}
