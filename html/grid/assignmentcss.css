@@ -1,0 +1,21 @@
+.grid-container{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 20vh 80vh;
+    grid-template-areas: 
+    'head head'
+    'navbar content';
+
+}
+header{
+    background-color: whitesmoke;
+    grid-area: head;
+}
+nav{
+    background-color: lightgrey;
+    grid-area: navbar;
+}
+main{
+    background-color: gray;
+    grid-area: content;
+}
