@@ -1,6 +1,6 @@
 body{
     background-color: tomato;
-    color: white;
+    color: black;
     display: grid;
     /* border: 1px solid black; */
     grid-template-columns: 10% 70% 10% 10%;
@@ -17,22 +17,30 @@ header{
 }
 main{
     grid-area: content;
-    border: 1px solid black;
+    border: 2px solid black;
     text-align: center;
+    display: flex;
+    flex-direction: column;
     
 }
 nav{
     grid-area: navbar;
-    border: 1px solid black;
+    border: 2px solid black;
     text-align: center;
 }
 aside{
     grid-area: sider-1,sider-2;
-    border: 1px solid black;
+    border: 2px solid black;
     text-align: center;
 }
 footer{
     grid-area: foot;
-    border: 1px solid black;
+    border: 2px solid black;
     text-align: center;
+}
+.cool{
+    background-color: yellow;
+}
+div{
+    width: 10px;
 }
