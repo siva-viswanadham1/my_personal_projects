@@ -4,5 +4,8 @@ console.log(arr);
 let arr2=[1,2,3,4];
 arr2.push([5,6,7]);
 console.log(arr2);
-
+let myfunc=function(){
+    console.log("function expression")
+}
+myfunc()
 
