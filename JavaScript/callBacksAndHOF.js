@@ -10,7 +10,6 @@ let sumOfSquare=function(a,b,square){
     return k+q;
 }
 console.log(sumOfSquare(1,2,square));
-
 // qustion 1- given array a[] of transcations we have to filter credit and debit tractaions?
 
 let tractaions=[100,-200,300,400,-500,600]
