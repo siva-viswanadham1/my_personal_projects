@@ -7,7 +7,6 @@ console.log(numbers)
 console.log(squareofnumber)
 
 // filter function
-
 let tractaions=[100,-200,300,400,-500];
 let credit=tractaions.filter(function(tractaion){
     return tractaion>0;
@@ -27,7 +26,6 @@ let sum=num.reduce(function(number,sum){
 console.log(sum);
 
 //every
-
 let allcredit=tractaions.every(function(tractaion){
     return tractaion > 0;
 })

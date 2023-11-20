@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="hello-btn">Say Hello</button>
+    <button id="bye-btn">Say Bye</button>
+    
+</body>
+<script>
+  let hello=document.getElementById('hello-btn')
+  hello.addEventListener('click',function(){
+    let div=document.createElement('div')
+    div.innerText='Hello'
+    let body=document.querySelector('body')
+    body.appendChild(div)
+  })
+  let bye=document.getElementById('bye-btn')
+  bye.addEventListener('click',function(){
+    let div=document.createElement('div')
+    div.innerText="Bye"
+    let body=document.querySelector('body')
+    body.appendChild(div);
+  })
+</script> 
+
+</html>
