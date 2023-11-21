@@ -9,5 +9,28 @@ let myfunc=function(){
 }
 myfunc()
 
+let random=function(){
+    return Math.random() *6;
+}
+let randomnumber=function(){
+    let f=random()
+    if(f<=1){
+        return 1;
+    }else if(f<=2){
+        return 2;
+    }else if(f<=3){
+        return 3;
+    }else if(f<=4){
+        return 4;
+    }else if(f<=5){
+        return 5;
+    }else{
+        return 6;
+    }
+}
+for(let i=0; i<14 ;i++){
+    console.log(randomnumber());
+}
+
 
 
