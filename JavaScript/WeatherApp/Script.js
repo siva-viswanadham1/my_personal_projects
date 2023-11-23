@@ -13,7 +13,7 @@ form.addEventListener('submit',function(event){
     getcallAPI(cityname)
 })
 
-try{
+
 async function getcallAPI(cityname){
   const response=await fetch(`http://api.weatherapi.com/v1/current.json?key=06c512c5d2b34a0cb48120115232311&q=${cityname}&aqi=no`);
   const jsonobj=await response.json();
@@ -31,9 +31,7 @@ async function getcallAPI(cityname){
   let time=dateandtime[1];
   console.log(day);
   date.innerText=`${objdate} ${days[day]}`;
+}
 
-}
-}catch{
-    window.alert("entered city is unavaible")
-}
+
 getcallAPI(cityname)
