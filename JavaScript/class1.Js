@@ -28,9 +28,14 @@ let randomnumber=function(){
         return 6;
     }
 }
-for(let i=0; i<14 ;i++){
-    console.log(randomnumber());
+
+
+function fun(){
+    return 6;
 }
+
+let k=fun;
+console.log(k);
 
 
 
