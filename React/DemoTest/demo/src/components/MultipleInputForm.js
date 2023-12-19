@@ -26,7 +26,7 @@ const MultipleInputForm = () => {
     <div>
        <form onSubmit={handleSubmit}>
             <h1>Form</h1>
-            <input type='text' placeholder='Enter First name' name="firstName" value={formData.fistName} onChange={handleInput}></input>
+            <input type='text' placeholder='Enter First name' name="firstName" value={formData.firstName} onChange={handleInput}></input>
             <input type='text' placeholder='Enter Last name' name="lastName" value={formData.lastName} onChange={handleInput}></input>
             <button>Submit</button>
        </form>

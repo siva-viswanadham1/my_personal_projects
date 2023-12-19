@@ -9,6 +9,9 @@ import MultipleInputForm from './components/MultipleInputForm';
 function App() {
   return (
     <div className="App">
+      {/* <CounterQ />
+      <Mycomponent/>
+      <ControlledForm /> */}
       <MultipleInputForm />
       
     </div>
