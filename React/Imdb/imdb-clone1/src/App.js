@@ -4,7 +4,7 @@ import NavBar from './components/NavBar';
 import Banner from './components/Banner';
 import Movies from './components/Movies';
 import WatchList from './components/WatchList';
- import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
