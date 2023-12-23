@@ -17,6 +17,10 @@ const Movies = () => {
   }
   useEffect(()=>{
     getTrendingMovies();
+    let newWatchList=JSON.parse(localStorage.getItem('Imdb'));
+    if(newWatchList){
+      setWatchList(newWatchList)
+    }
   },[pageNumber])
 
   const nextPage=()=>{
@@ -30,12 +34,14 @@ const Movies = () => {
   const addWatchList=(movie)=>{
     let newWatchList=[...watchList,movie]
     setWatchList(newWatchList);
+    localStorage.setItem('Imdb',JSON.stringify(newWatchList))
   }
   const removeWatchList=(movie)=>{
-    let newWatchList=watchList.filter((movieId)=>{
-      return movie!==movieId
+    let newWatchList=watchList.filter((watchListMovie)=>{
+      return watchListMovie.id!==movie.id
     })
     setWatchList(newWatchList)
+    localStorage.setItem('Imdb',JSON.stringify(newWatchList))
   }
   const showAddIcon=(movie)=>{
     return <div onClick={()=>addWatchList(movie)}>+</div>
@@ -43,12 +49,12 @@ const Movies = () => {
   const showRemoveIcon=(movie)=>{
     return <div onClick={()=>removeWatchList(movie)}>-</div>
   }
-  const isMoiveInWatchList=(movie)=>{
-    return watchList.includes(movie)
+  const isMoiveInWatchList=(movieId)=>{
+    return watchList.some((watchListMovie)=>{
+      return watchListMovie.id===movieId
+    })
   }
-  const moviesInWatchList=()=>{
-    console.log(watchList)
-  }
+ 
   const showButton=(movie)=>{
     setUseHover(movie)
   }
@@ -71,12 +77,12 @@ const Movies = () => {
               onMouseLeave={hideButton}
               >
                 <div className='bg-gray-950 bg-opacity-60 text-slate-200 text-sm text-center  p-4 w-full '>{movie.title}</div>
-                <div className='top-1 end-0 m-2 bg-gray-900 opacity-60 border px-0 py-0  text-2xl w-6 hover:scale-110 hover:bg-sky-700 cursor-pointer absolute static' 
+                <div className='top-1 end-0 m-2 bg-gray-900 opacity-50 border px-0 py-0  text-2xl w-6 hover:scale-110 hover:bg-sky-700 cursor-pointer absolute static' 
                 style={{
                   display: useHover===movie.id ? 'block' : 'none'
                 }}>
                   {
-                    isMoiveInWatchList(movie.id) ? showRemoveIcon (movie.id) : showAddIcon(movie.id)
+                    isMoiveInWatchList(movie.id) ? showRemoveIcon (movie) : showAddIcon(movie)
                   }
                 </div>
                
@@ -87,9 +93,7 @@ const Movies = () => {
                
         </div>
         <Pagination pageNumberProp={pageNumber} next={nextPage} previous={previousPage}/>
-        {
-          moviesInWatchList()
-        }
+        
     </div>
   )
   
