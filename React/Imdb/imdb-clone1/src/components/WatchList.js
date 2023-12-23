@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react'
 const WatchList = () => {
   const [favarouties,setFavaroutes]=useState([]);
   const [genres,setGenres]=useState([]);
-  const [currentGenre,setCurrentGenre]=useState('All Genere')
+  const [currentGenre,setCurrentGenre]=useState('All Genre')
+  const[searchString,setSearchString]=useState('')
   const setGenresFun=()=>{
     let favaroutiesGeners=[];
     for(let i=0;i<favarouties.length;i++){
@@ -78,8 +79,17 @@ const WatchList = () => {
       }
       )
     })
+    fileterMovies=fileterMovies.filter(movie=>{
+      return movie.title.toLowerCase().includes(searchString.toLowerCase())
+    })
   
-
+  const removeMovie=movie=>{
+    let newUadatedMovies=favarouties.filter(fmovie=>{
+      return fmovie.id!==movie.id
+    })
+    setFavaroutes(newUadatedMovies)
+    localStorage.setItem('Imdb',JSON.stringify(newUadatedMovies))
+  }
   const moviesCard=(movie)=>{
     return(
           <tr  >
@@ -93,7 +103,11 @@ const WatchList = () => {
             <td className=" pl-6 py-4">{movie.vote_average}</td>
             <td className=" pl-6 py-4">{movie.popularity}</td>
             <td className=" pl-6 py-4">{movie.genre_ids.map((id)=>`${genreIDs[id]} `)}</td>
-            <td className='pl-6 py-4 text-4xl hover:scale-110 duration-300 cursor-pointer'>-</td>
+            <td className='pl-6 py-4 text-base text-red-600 hover:scale-110 duration-300 cursor-pointer'>
+              <button
+              className='py-4'
+              onClick={()=>removeMovie(movie)}>Delete</button>
+            </td>
           </tr>
       
     )
@@ -103,11 +117,24 @@ const WatchList = () => {
       <div className="mt-6 flex space-x-2 justify-center">
         {getGenreFilter()}
       </div>
-      <table className="table-fixed px-px p-4  m-4 rounded w-full bg-gray-950">
+      <div className="text-center">
+        <input
+          type="text"
+          className="border bg-gray-200 border-4 text-center m-2 p-1 caret-black text-black"
+          placeholder="Search for Movies"
+          value={searchString}
+          onChange={(e)=> setSearchString(e.target.value)}
+        />
+      </div>
+      <table className="table-fixed px-px p-4  m-4 rounded w-full ">
         <thead>
           <tr>
             <th className='m-4'>Name</th>
-            <th>Ratings</th>
+            <th>
+                
+              Ratings
+                
+            </th>
             <th>Popularity</th>
             <th>Genere</th>
             <th>Remove</th>
