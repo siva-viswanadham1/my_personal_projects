@@ -6,6 +6,7 @@ const Movies = () => {
    const [movieData,setMovieData]=useState([])
    const [pageNumber,setPageNumber]=useState(1)
    const [watchList,setWatchList]=useState([])
+   const [useHover,setUseHover]=useState('');
   const getTrendingMovies=()=>{
     axios
     .get(`https://api.themoviedb.org/3/trending/movie/day?api_key=c585cc57748118ea84f6c89514fa98c2&page=${pageNumber}`)
@@ -48,7 +49,12 @@ const Movies = () => {
   const moviesInWatchList=()=>{
     console.log(watchList)
   }
-  
+  const showButton=(movie)=>{
+    setUseHover(movie)
+  }
+  const hideButton=()=>{
+    setUseHover('')
+  }
 
  
   
@@ -59,12 +65,16 @@ const Movies = () => {
           {
           movieData.map(movie=>{
             return<div key={movie.id}>
-              <div className='w-[106px] h-[30vh] bg-center bg-cover md:h-[40vh] md:w-[180px] m-9 space-x-3.5 rounded-xl hover:scale-110 duration-300 flex-bottom font-bold text-center align-baseline items-end self-end flex items-end'
+              <div className='w-[106px] h-[30vh] bg-center bg-cover md:h-[40vh] md:w-[180px] m-9 space-x-3.5 rounded-xl hover:scale-110 duration-300 flex-bottom font-bold text-center align-baseline items-end self-end flex items-end relative'
               style={{backgroundImage:`url(https://image.tmdb.org/t/p/original/t/p/w500/${movie.poster_path})`}}
+              onMouseOver={()=>showButton(movie.id)}
+              onMouseLeave={hideButton}
               >
-                
                 <div className='bg-gray-950 bg-opacity-60 text-slate-200 text-sm text-center  p-4 w-full '>{movie.title}</div>
-                <div className='top-1 end-0 m-2 bg-gray-900 opacity-60 border px-0 py-0  text-2xl w-6 hover:scale-110 hover:bg-sky-700 cursor-pointer absolute'>
+                <div className='top-1 end-0 m-2 bg-gray-900 opacity-60 border px-0 py-0  text-2xl w-6 hover:scale-110 hover:bg-sky-700 cursor-pointer absolute static' 
+                style={{
+                  display: useHover===movie.id ? 'block' : 'none'
+                }}>
                   {
                     isMoiveInWatchList(movie.id) ? showRemoveIcon (movie.id) : showAddIcon(movie.id)
                   }
