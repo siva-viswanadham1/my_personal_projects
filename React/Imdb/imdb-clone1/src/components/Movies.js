@@ -8,7 +8,7 @@ const Movies = () => {
    const [watchList,setWatchList]=useState([])
    const [useHover,setUseHover]=useState('');
   const getTrendingMovies=()=>{
-    axios
+    axios 
     .get(`https://api.themoviedb.org/3/trending/movie/day?api_key=c585cc57748118ea84f6c89514fa98c2&page=${pageNumber}`)
     .then(response =>{
       console.log(response)
