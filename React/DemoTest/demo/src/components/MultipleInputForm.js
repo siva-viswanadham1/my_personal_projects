@@ -20,6 +20,7 @@ const MultipleInputForm = () => {
         e.preventDefault()
         console.log(`First Name is ${formData.firstName}.`)
         console.log(`Last Name is ${formData.lastName}.`)
+        setFormData({firstName:"",lastName:""})
     }
 
   return (

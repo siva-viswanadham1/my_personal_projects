@@ -12,6 +12,8 @@ function App() {
       {/* <CounterQ />
       <Mycomponent/>
       <ControlledForm /> */}
+      {/* <MultipleInputForm /> */}
+      {/* <ControlledForm/> */}
       <MultipleInputForm />
       
     </div>
