@@ -68,4 +68,4 @@ async function updateRecord(id){
     console.log(updateCourse)
 
 }
-//updateRecord('65cfea18ddfcda4d8ab2795f')
+updateRecord('65cfea18ddfcda4d8ab2795f')
