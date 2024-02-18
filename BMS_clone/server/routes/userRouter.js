@@ -1,5 +1,6 @@
 const router=require('express').Router()
 const User=require('../models/userModel')
+const bycypt=require('bcrypt')
 router.post('/register',async (req,res)=>{
     try {
         const user=req.body
@@ -10,7 +11,9 @@ router.post('/register',async (req,res)=>{
                 message:'User already exists'
             })
         }else{
-            const newUser=new User(user)
+            const salt=await bycypt.genSalt(10)
+            const hashedPassword=await bycypt.hash(user.password,salt)
+            const newUser=new User({...user,password:hashedPassword})
             newUser.save()
             res.send({
                 success:true,
@@ -26,6 +29,28 @@ router.post('/register',async (req,res)=>{
         })
     }
 
+})
+router.post('/login',async(req,res)=>{
+    const user=await User.findOne({email:req.body.email})
+    if(!user){
+        res.send({
+            success:false,
+            message:"User does not exist"
+        })
+    }else{
+        const validPassword=await bycypt.compare(req.body.password,user.password)
+        if(!validPassword){
+            res.send({
+                success:false,
+                message:'Password incorrect'
+            })
+        }else{
+            res.send({
+                success:true,
+                message:'User logined'
+            })
+        }
+    }
 })
 
 exports.router=router

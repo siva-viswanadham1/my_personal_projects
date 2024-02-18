@@ -15,9 +15,9 @@ const Login = () => {
         <hr />
         <Form layout="vertical" className="mt-1" onFinish={onFinish}>
           <Form.Item
-            label="Name"
-            name="name"
-            rules={[{required:true,message:'Please input your name'}]}
+            label="Email"
+            name="email"
+            rules={[{required:true,message:'Please input your email'}]}
           >
             <input type="text" />
           </Form.Item>
