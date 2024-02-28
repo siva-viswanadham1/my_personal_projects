@@ -5,6 +5,9 @@ import Mycomponent from './components/Mycomponent';
 import ControlledForm from './components/ControlledForm';
 //import Forms from './components/forms';
 import MultipleInputForm from './components/MultipleInputForm';
+import Counter from './components/Counter';
+import Test from './components/Test';
+import Task from './components/Task';
 
 function App() {
   return (
@@ -14,7 +17,10 @@ function App() {
       <ControlledForm /> */}
       {/* <MultipleInputForm /> */}
       {/* <ControlledForm/> */}
-      <MultipleInputForm />
+      {/* <MultipleInputForm /> */}
+      {/* <Counter /> */}
+      {/* <Test /> */}
+      <Task />
       
     </div>
   );

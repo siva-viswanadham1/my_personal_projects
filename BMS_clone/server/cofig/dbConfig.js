@@ -3,8 +3,8 @@ const mongoose=require('mongoose')
 const mongo_Url=process.env.mongoUrl 
 //console.log('MongoDB URL:', mongo_Url);
 
-mongoose.connect(mongo_Url, { useNewUrlParser: true, useUnifiedTopology: true });
-//mongoose.connect(mongo_Url)
+mongoose.connect(mongo_Url);
+
 const connection = mongoose.connection;
 
 connection.on('connected', () => {

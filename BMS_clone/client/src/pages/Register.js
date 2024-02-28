@@ -1,11 +1,24 @@
 import React from 'react';
 //import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button,  Form, } from 'antd';
+import { Button,  Form, message, } from 'antd';
 import { Link } from 'react-router-dom';
+import { RegisterUser } from '../apicalls/users';
 
 const Register = () => {
-    const onFinish=()=>{
-        console.log('user register')
+    const onFinish= async (values)=>{
+     try {
+      
+      const response=await RegisterUser(values);
+      //console.log("respons",response)
+        if(response.success){
+          message.success(response.message)
+        }else{
+          message.error(response.error)
+        }
+      
+     } catch (error) {
+      message.error(error)
+     }
     } 
   return (
     <div className="flex justify-center h-screen items-center bg-my">
@@ -38,7 +51,7 @@ const Register = () => {
           </Form.Item>
 
           <div className="flex flex-col mt-2 gap-1">
-            <Button fullWidth htmlType="submit" type="primary">
+            <Button fullWidth htmlType='submit' type="primary">
               {" "}
               Register{" "}
             </Button>

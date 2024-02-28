@@ -1,10 +1,31 @@
 import React from 'react'
-import { Button,  Form, } from 'antd';
-import { Link } from 'react-router-dom';
+import { Button,  Form, message, } from 'antd';
+import { Link,useNavigate } from 'react-router-dom';
+import { axiosInstance } from '../apicalls';
+import { LoginUser } from '../apicalls/users';
+import {useEffect} from 'react';
+//import { useHistory } from 'react-router-dom';
 
 const Login = () => {
-    const onFinish=()=>{
-        console.log('user logined')
+  const navigate=useNavigate();
+  useEffect(() => {
+    if(localStorage.getItem("token")) {
+      navigate("/")
+    }
+  }, [])
+    const onFinish=async (values)=>{
+        try {
+          const response=await LoginUser(values)
+          if(response.success){
+            message.success(response.message)
+            localStorage.setItem('token',response.data)
+            navigate("/")
+          }else{
+            message.error(response.message)
+          }
+        } catch (error) {
+          message.error(error)
+        }
     }
   return (
     <div className="flex justify-center h-screen items-center bg-my">
