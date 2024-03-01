@@ -4,12 +4,13 @@ import { Link,useNavigate } from 'react-router-dom';
 import { axiosInstance } from '../apicalls';
 import { LoginUser } from '../apicalls/users';
 import {useEffect} from 'react';
-//import { useHistory } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
 
 const Login = () => {
   const navigate=useNavigate();
   useEffect(() => {
-    if(localStorage.getItem("token")) {
+    if(Cookies.get('token')) {
       navigate("/")
     }
   }, [])
@@ -18,7 +19,7 @@ const Login = () => {
           const response=await LoginUser(values)
           if(response.success){
             message.success(response.message)
-            localStorage.setItem('token',response.data)
+            Cookies.set('token', response.data, { expires: 1 });
             navigate("/")
           }else{
             message.error(response.message)

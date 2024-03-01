@@ -8,7 +8,7 @@ const Register = () => {
     const onFinish= async (values)=>{
      try {
       
-      const response=await RegisterUser(values);
+      const response=await RegisterUser(values)
       //console.log("respons",response)
         if(response.success){
           message.success(response.message)
