@@ -19,7 +19,7 @@ const Login = () => {
           const response=await LoginUser(values)
           if(response.success){
             message.success(response.message)
-            Cookies.set('token', response.data, { expires: 1 });
+            Cookies.set('token', response.data, { expires: 7 });
             navigate("/")
           }else{
             message.error(response.message)

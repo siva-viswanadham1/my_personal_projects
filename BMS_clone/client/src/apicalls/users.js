@@ -22,4 +22,13 @@ export const LoginUser=async(payload)=>{
     }
 }
 
+export const getUser=async()=>{
+    try {
+        const response = await axiosInstance.get('api/users/currentUser')
+        return response.data
+    } catch (error) {
+        return error
+    }
+}
+
 

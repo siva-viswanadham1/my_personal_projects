@@ -2,14 +2,17 @@ const jwt =require('jsonwebtoken')
 
 module.exports=(req,res,next)=>{
     try {
-        const token=req.headers.authorization.split(' ')[1]
+        console.log(req.headers)
+        const token = req.headers.authorization.split(' ')[1]
+        console.log(token)
         const userId=jwt.verify(token,process.env.jwt_secret).userId
         req.body.userId=userId
         next()
     } catch (error) {
         res.status(403).send({
             success:false,
-            message:'User is unauthoside'
+            message:'User is unauthoside',
+            data: token
         })
     }
 }

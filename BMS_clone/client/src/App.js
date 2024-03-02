@@ -9,6 +9,8 @@ import './stylesheets/custom.css';
 import './stylesheets/form-element.css';
 import './stylesheets/sizes.css';
 import './stylesheets/themes.css';
+import './components/ProtectedRoute'
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -18,7 +20,7 @@ function App() {
           
           <Route path='/login' element={<Login />}/>
           <Route path='/register' element={<Register/>} />
-          <Route path='/' element={<Home/>}/>
+          <Route path='/' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
         </Routes>
       </BrowserRouter>
     </div>
