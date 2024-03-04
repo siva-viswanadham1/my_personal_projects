@@ -1,10 +1,17 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 //import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button,  Form, message, } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { RegisterUser } from '../apicalls/users';
+import Cookies from 'js-cookie';
 
 const Register = () => {
+    const navigate=useNavigate();
+    useEffect(()=>{
+      if(Cookies.get('token')){
+        navigate("/");
+      }
+    },[])
     const onFinish= async (values)=>{
      try {
       
