@@ -5,13 +5,29 @@ import moment from "moment";
 import { message, Table } from "antd";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../../redux/loadingSlice";
+import { getAllMovies } from '../../apicalls/movies';
 
 const MoviesList = () => {
-    const [movies, setMovies] =useState()
-    const [showMovieFormModal, setShowMovieFormModal] = useState(false);
+  const [movies, setMovies] =useState([])
+  const [showMovieFormModal, setShowMovieFormModal] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [formType, setFormType] = useState("add");
   const dispatch = useDispatch();
+  const getData=async()=>{
+    try {
+        dispatch(ShowLoading());
+        const response=await getAllMovies();
+        dispatch(HideLoading());
+        if(response.success){
+            setMovies(response.data)
+        }else{
+            message.error(response.message)
+        }
+    } catch (error) {
+        
+    }
+  }
+
   const columns = [
     {
       title: "Poster",
@@ -83,7 +99,7 @@ const MoviesList = () => {
   ];
 
   useEffect(() => {
-    //getData();
+    getData();
   }, []);
 
   return (
@@ -108,7 +124,7 @@ const MoviesList = () => {
           selectedMovie={selectedMovie}
           setSelectedMovie={setSelectedMovie}
           formType={formType}
-          //getData={getData}
+          getData={getData}
         />
       )}
     </div>

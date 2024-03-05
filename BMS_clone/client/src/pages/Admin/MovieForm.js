@@ -3,7 +3,7 @@ import { Col, Form, message, Modal, Row } from "antd";
 import Button from "../../components/Button";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../../redux/loadingSlice";
-// import { AddMovie, UpdateMovie } from "../../apicalls/movies";
+ import { AddMovie} from "../../apicalls/movies";
 import moment from "moment";
 
 function MovieForm({
@@ -21,6 +21,27 @@ function MovieForm({
   }
 
   const dispatch = useDispatch();
+  const onFinish=async(values)=>{
+    try {
+        dispatch(ShowLoading())
+        let response=null;
+        if(formType==="add"){
+            response=await AddMovie(values);
+        }
+        if(response.success){
+            getData()
+            message.success(response.message)
+            dispatch(HideLoading())
+            setShowMovieFormModal(false)
+        }else{
+            message.error(response.message)
+        }
+    } catch (error) {
+        dispatch(HideLoading())
+        message.error(error.message)
+    }
+  }
+
 //   const onFinish = async (values) => {
 //     try {
 //       dispatch(ShowLoading());
@@ -60,7 +81,7 @@ function MovieForm({
       footer={null}
       width={800}
     >
-      <Form layout="vertical" initialValues={selectedMovie}>
+      <Form layout="vertical" initialValues={selectedMovie} onFinish={onFinish}>
         <Row gutter={16}>
           <Col span={24}>
             <Form.Item label="Movie Name" name="title">
@@ -76,7 +97,7 @@ function MovieForm({
 
           <Col span={8}>
             <Form.Item label="Movie Duration (Min)" name="duration">
-              <input type="number" />
+              <input type="number" min={0} />
             </Form.Item>
           </Col>
 
