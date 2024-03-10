@@ -6,7 +6,6 @@ import Cookies from 'js-cookie';
 const axiosInstance = axios.create({
     headers: {
         credentials: 'include',
-        // method: 'post',
         'Content-Type': "application/json",
         
     }

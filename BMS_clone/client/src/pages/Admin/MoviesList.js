@@ -5,13 +5,14 @@ import moment from "moment";
 import { message, Table } from "antd";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../../redux/loadingSlice";
-import { getAllMovies } from '../../apicalls/movies';
+import { getAllMovies ,DeleteMovie} from '../../apicalls/movies';
+
 
 const MoviesList = () => {
-  const [movies, setMovies] =useState([])
-  const [showMovieFormModal, setShowMovieFormModal] = useState(false);
-  const [selectedMovie, setSelectedMovie] = useState(null);
-  const [formType, setFormType] = useState("add");
+  const [movies, setMovies] = React.useState([]);
+  const [showMovieFormModal, setShowMovieFormModal] = React.useState(false);
+  const [selectedMovie, setSelectedMovie] = React.useState(null);
+  const [formType, setFormType] = React.useState("add");
   const dispatch = useDispatch();
   const getData=async()=>{
     try {
@@ -27,7 +28,24 @@ const MoviesList = () => {
         
     }
   }
-
+  const handleDelete = async (movie) => {
+    try {
+      dispatch(ShowLoading());
+      //console.log(movie)
+      const response = await DeleteMovie(movie);
+      if (response.success) {
+        message.success(response.message);
+        getData();
+      } else {
+        message.error(response.message);
+      }
+      dispatch(HideLoading());
+    } catch (error) {
+      dispatch(HideLoading());
+      message.error(error.message);
+    }
+  };
+  
   const columns = [
     {
       title: "Poster",
@@ -81,7 +99,7 @@ const MoviesList = () => {
             <i
               className="ri-delete-bin-line"
               onClick={() => {
-               // handleDelete(record._id);
+                handleDelete(record);
               }}
             ></i>
             <i
@@ -100,7 +118,7 @@ const MoviesList = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [movies]);
 
   return (
     <div>

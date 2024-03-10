@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { RegisterUser } from '../apicalls/users';
 import Cookies from 'js-cookie';
 
+
 const Register = () => {
     const navigate=useNavigate();
     useEffect(()=>{

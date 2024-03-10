@@ -1,12 +1,12 @@
 import React,{useEffect} from 'react'
 import {useNavigate}  from 'react-router-dom';
 import { getUser } from '../apicalls/users';
-import Cookies from 'js-cookie';
 import { useDispatch,useSelector } from 'react-redux';
 import { ShowLoading,HideLoading } from '../redux/loadingSlice';
 import { SetUser } from '../redux/userSlice';
 //import { axiosInstance } from '../apicalls';
-import { message } from "antd"
+import { message } from "antd";
+import Cookies from 'js-cookie';
 
 const ProtectedRoute = ({children}) => {
     const navigate=useNavigate()
